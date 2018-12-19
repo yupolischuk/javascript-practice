@@ -38,32 +38,31 @@
 /*
     Callbacks called in main function
  */
-// var initStr = 'Init ';
-//
-// function one(str, callback) {
-//     setTimeout(() => {
-//         console.log('function one called');
-//         str = str + ' one';
-//         callback(str);
-//     }, 1000);
-// }
-//
-// function two(str, callback) {
-//     setTimeout(() => {
-//         console.log('function two called');
-//         str = str + ' two';
-//         callback(str);
-//     }, 1000);
-// }
-//
-// function three(str, callback) {
-//     setTimeout(() => {
-//         console.log('function three called');
-//         str = str + ' three';
-//         callback(str);
-//     }, 1000);
-// }
-//
+var initStr = 'Init ';
+
+function one(str, callback) {
+    setTimeout(() => {
+        console.log('function one called');
+        str = str + ' one';
+        callback(str);
+    }, 1000);
+}
+
+function two(str, callback) {
+    setTimeout(() => {
+        console.log('function two called');
+        str = str + ' two';
+        callback(str);
+    }, 1000);
+}
+
+function three(str, callback) {
+    setTimeout(() => {
+        console.log('function three called');
+        str = str + ' three';
+        callback(str);
+    }, 1000);
+}
 
 /*
  run callback chain
@@ -83,13 +82,13 @@
  run callback chain with arrow funcitons
   */
 
-// function main(str, callback) {
-//     return one(str, res1 => two(res1, res2 => three(res2, res3 => callback(res3))));
-// }
+function main(str, callback) {
+    return one(str, res1 => two(res1, res2 => three(res2, res3 => callback(res3))));
+}
 
-// main(initStr, function (res) {
-//     console.log(res);
-// });
+main(initStr, function (res) {
+    console.log(res);
+});
 
 
 
