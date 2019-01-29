@@ -36,7 +36,6 @@ class LinkedList {
   }
 
   addAtHead(val) {
-    console.log('add at head called!');
     let node = new Node(val);
     node.next = this.head;
     this.head = node;
@@ -91,7 +90,23 @@ class LinkedList {
   }
 
   deleteAtIndex(index) {
+    if (index < 0 || index >= this.size) {
+      return false;
+    }
 
+    let current = this.head;
+    
+    if (index == 0) {
+      this.head = current.next;
+    } else {
+      let counter = 0;
+      while (counter < (index - 1)) {
+        current = current.next;
+      }
+      current.next = current.next.next;
+    }
+
+    this.size--;
   }
 
   listAll() {
@@ -113,41 +128,17 @@ class LinkedList {
 
 const linkedList = new LinkedList();
 
-linkedList.addAtIndex(0, 7);
-console.log(linkedList.listAll());
 
-// linkedList.addAtHead(3);
-// linkedList.addAtHead(5);
-// linkedList.addAtHead(7);
-// linkedList.addAtHead(9);
-// linkedList.addAtHead(15);
-// linkedList.addAtHead(21);
-// linkedList.addAtHead(55);
+linkedList.addAtHead(3);
+linkedList.addAtHead(5);
+linkedList.addAtHead(7);
+linkedList.addAtHead(9);
 
-// linkedList.addAtTail(77);
-// linkedList.addAtTail(55);
-// linkedList.addAtIndex(5, 799999999999);
-// console.log(util.inspect(linkedList, false, null, true));
-// console.log('******************************');
+linkedList.addAtTail(77);
+linkedList.addAtTail(55);
+linkedList.addAtIndex(5, 799999999999);
+
+console.log(util.inspect(linkedList, false, null, true));
+console.log('******************************');
 // console.log(linkedList.get(5));
-// console.log(linkedList.listAll());
-
-// console.log(linkedList.get(0));
-// console.log(linkedList.get(4));
-// console.log(linkedList.get(6));
-// console.log(linkedList.get(7));
-
-
-// linkedList.addAtHead(3);
-// console.log(util.inspect(linkedList, false, null, true));
-// console.log(linkedList.get(1));
-
-
-
-// MyLinkedList linkedList = new MyLinkedList();
-// linkedList.addAtHead(1);
-// linkedList.addAtTail(3);
-// linkedList.addAtIndex(1, 2);  // linked list becomes 1->2->3
-// linkedList.get(1);            // returns 2
-// linkedList.deleteAtIndex(1);  // now the linked list is 1->3
-// linkedList.get(1);            // returns 3
+console.log(linkedList.listAll());
