@@ -35,6 +35,25 @@ class LinkedList {
     return current.val;
   }
 
+  indexOf(value) {
+    if (!this.head) {
+      return false;
+    }
+
+    let current = this.head;
+    let counter = 0;
+
+    while (counter < this.size) {
+      if (current.val === value) {
+        return counter;
+      }
+      current = current.next;
+      counter++;
+    }
+    
+    return false;
+  }
+
   addAtHead(val) {
     let node = new Node(val);
     node.next = this.head;
