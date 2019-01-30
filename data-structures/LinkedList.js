@@ -75,8 +75,9 @@ class LinkedList {
     } else {
       let current = this.head;
       let counter = 0;
+      const position = index - 1;
 
-      while (counter < (index-1)) {
+      while (counter < position) {
         current = current.next;
         counter++;
       }
@@ -95,13 +96,16 @@ class LinkedList {
     }
 
     let current = this.head;
-    
+
     if (index == 0) {
       this.head = current.next;
     } else {
       let counter = 0;
-      while (counter < (index - 1)) {
+      const position = index - 1;
+
+      while (counter < position) {
         current = current.next;
+        counter++;
       }
       current.next = current.next.next;
     }
@@ -138,7 +142,12 @@ linkedList.addAtTail(77);
 linkedList.addAtTail(55);
 linkedList.addAtIndex(5, 799999999999);
 
-console.log(util.inspect(linkedList, false, null, true));
+// console.log(util.inspect(linkedList, false, null, true));
 console.log('******************************');
 // console.log(linkedList.get(5));
+console.log(linkedList.listAll());
+linkedList.addAtIndex(7, 17);
+linkedList.addAtIndex(7, 18);
+console.log(linkedList.listAll());
+linkedList.deleteAtIndex(4);
 console.log(linkedList.listAll());
