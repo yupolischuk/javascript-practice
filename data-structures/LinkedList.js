@@ -67,11 +67,6 @@ class LinkedList {
 
     if (!current) {
       this.head = new Node(val);
-      // todo add
-      /*
-          node.next = this.head;
-          this.head = node;
-      */
     } else {
       while (current.next) {
         current = current.next;
