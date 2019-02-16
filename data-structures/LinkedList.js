@@ -127,6 +127,34 @@ class LinkedList {
     this.size--;
   }
 
+  /**
+   * @return {LinkedListNode}
+   */
+  deleteHead() {
+    let current = this.head;
+    this.head = current.next;
+
+    this.size--;
+    return 'TODO return deleted head';
+
+    //*************************** */
+    // if (!this.head) {
+    //   return null;
+    // }
+    // // TODO this.head = current.next
+    // const deletedHead = this.head;
+
+    // if (this.head.next) {
+    //   this.head = this.head.next;
+    // } else {
+    //   this.head = null;
+    //   //this.tail = null;
+    // }
+    // this.size--;
+
+    // return deletedHead;
+  }
+
   listAll() {
     // returns array
     let res = [];
@@ -144,24 +172,24 @@ class LinkedList {
 }
 
 
-const linkedList = new LinkedList();
+// const linkedList = new LinkedList();
 
 
-linkedList.addAtHead(3);
-linkedList.addAtHead(5);
-linkedList.addAtHead(7);
-linkedList.addAtHead(9);
+// linkedList.addAtHead(3);
+// linkedList.addAtHead(5);
+// linkedList.addAtHead(7);
+// linkedList.addAtHead(9);
 
-linkedList.addAtTail(77);
-linkedList.addAtTail(55);
-linkedList.addAtIndex(5, 799999999999);
+// linkedList.addAtTail(77);
+// linkedList.addAtTail(55);
+// linkedList.addAtIndex(5, 799999999999);
 
-// console.log(util.inspect(linkedList, false, null, true));
-console.log('******************************');
-// console.log(linkedList.get(5));
-console.log(linkedList.listAll());
-linkedList.addAtIndex(7, 17);
-linkedList.addAtIndex(7, 18);
-console.log(linkedList.listAll());
-linkedList.deleteAtIndex(4);
-console.log(linkedList.listAll());
+// // console.log(util.inspect(linkedList, false, null, true));
+// console.log('******************************');
+// // console.log(linkedList.get(5));
+// console.log(linkedList.listAll());
+// linkedList.addAtIndex(7, 17);
+// linkedList.addAtIndex(7, 18);
+// console.log(linkedList.listAll());
+// linkedList.deleteAtIndex(4);
+// console.log(linkedList.listAll());
