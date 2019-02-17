@@ -2,8 +2,8 @@ const util = require('util');
 
 
 class Node {
-  constructor(val) {
-    this.val = val;
+  constructor(value) {
+    this.value = value;
     this.next = null;
   }
 }
@@ -44,7 +44,7 @@ class LinkedList {
     let counter = 0;
 
     while (counter < this.size) {
-      if (current.val === value) {
+      if (current.value === value) {
         return counter;
       }
       current = current.next;
@@ -84,8 +84,6 @@ class LinkedList {
     }
     if (!current) {
       this.addAtHead(val);
-      
-      // this.head = new Node(val);
     } else {
       let current = this.head;
       let counter = 0;
@@ -133,36 +131,18 @@ class LinkedList {
   deleteHead() {
     let current = this.head;
     this.head = current.next;
-
     this.size--;
-    return 'TODO return deleted head';
 
-    //*************************** */
-    // if (!this.head) {
-    //   return null;
-    // }
-    // // TODO this.head = current.next
-    // const deletedHead = this.head;
-
-    // if (this.head.next) {
-    //   this.head = this.head.next;
-    // } else {
-    //   this.head = null;
-    //   //this.tail = null;
-    // }
-    // this.size--;
-
-    // return deletedHead;
+    return current;
   }
 
-  listAll() {
-    // returns array
+  toArray() {
     let res = [];
     let current = this.head;
     let counter = 0;
 
     while (counter < this.size) {
-      res.push(current.val);
+      res.push(current.value);
       current = current.next;
       counter++;
     }
@@ -171,13 +151,14 @@ class LinkedList {
   }
 }
 
+module.exports = LinkedList;
 
 // const linkedList = new LinkedList();
-
 
 // linkedList.addAtHead(3);
 // linkedList.addAtHead(5);
 // linkedList.addAtHead(7);
+// console.log(linkedList.toArray());
 // linkedList.addAtHead(9);
 
 // linkedList.addAtTail(77);
