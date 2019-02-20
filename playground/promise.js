@@ -28,7 +28,7 @@ function three(str) {
 }
 
 
-function res(str) {
+function main(str) {
     return one(str)
         .then(function (res) {
             return two(res)
@@ -41,4 +41,4 @@ function res(str) {
         });
 }
 
-res(initStr).then(a => console.log(a));
+main(initStr).then(a => console.log(a));
