@@ -15,9 +15,9 @@
 const amountFuncCalls = 7;
 const tasks = Array(amountFuncCalls).fill(asyncFunction);
 
-function asyncFunction(callback) {
+function asyncFunction(index, callback) {
     setTimeout(() => {
-        console.log('async function processed');
+        console.log('async function processed index: ' + index);
         callback();
     }, 1000);
 }
@@ -31,7 +31,7 @@ function iterate(index) {
         return finish();
     }
     const task = tasks[index];
-    task(function() {
+    task(index, function() {
         iterate(index + 1);
     });
 }
