@@ -17,12 +17,12 @@ function asyncFunc(index, callback) {
     }, 1000);
 }
 
-const tasks = [1, 2, 3, 4, 5];
+const collection = [1, 2, 3, 4, 5];
 
 let completed = 0;
-tasks.forEach(task => {
-    asyncFunc(task, () => {
-        if (++completed === tasks.length) {
+collection.forEach(item => {
+    asyncFunc(item, () => {
+        if (++completed === collection.length) {
             finish();
         }
     });
