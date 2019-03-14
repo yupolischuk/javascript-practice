@@ -13,7 +13,7 @@
 
  */
 
-const collection = [1, 2, 3, 4, 5];
+const myCollection = [1, 2, 3, 4, 5];
 
 function asyncFunc(index, callback) {
     setTimeout(() => {
@@ -22,19 +22,22 @@ function asyncFunc(index, callback) {
     }, 1000);
 }
 
-function finishFunc() {
+function finalFunc() {
     console.log('iteration completed');
 }
 
 
-function iterateSeries(collection, iteratorCallback, finalCallback, index=0) {
-    if (index === collection.length) {
-        return finalCallback();
+function iterateSeries(collection, iteratorCallback, finalCallback) {
+    function iterate(index) {
+        if (index === collection.length) {
+            return finalCallback();
+        }
+        const item = collection[index];
+        iteratorCallback(item, function() {
+            iterate(index + 1);
+        });
     }
-    const item = collection[index];
-    iteratorCallback(item, function() {
-        iterateSeries(collection, iteratorCallback, finalCallback, index + 1);
-    })
+    iterate(0);
 }
-iterateSeries(collection, asyncFunc, finishFunc);
+iterateSeries(myCollection, asyncFunc, finalFunc);
 
