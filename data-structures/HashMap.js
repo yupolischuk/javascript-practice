@@ -1,7 +1,7 @@
 var MyHashMap = function() {
-    this.mySet = Array.from({length:1000}, x=>[]);
+    this.mySet = Array.from({length:10}, x=>[]);
     this.mapFn = function(key){
-    	return key % 1000;
+    	return key % 10;
     }
 };
 
@@ -45,8 +45,26 @@ MyHashMap.prototype.remove = function(key) {
     if(index!==-1) arr.splice(index, 2);
 };
 
+
+MyHashMap.prototype.getAll = function(key) {
+    return this.mySet.filter(val => val.length > 0);
+};
+
+
 let obj = new MyHashMap();
+obj.put(1, 'ququ');
 obj.put(2, 'zuzu');
+obj.put(3, 'zuzu');
+obj.put(4, 'zuzu');
 obj.put(5, 'qwerty');
+obj.put(6, 'diuy');
+obj.put(7, 'xux');
+obj.put(8, 'xlj');
+obj.put(9, 'dho');
+obj.put(10, 'jhu');
+obj.put(11, 'dlo');
+obj.put(12, 'fll');
+obj.put(21, 'uul');
+console.log(obj);
 
 
