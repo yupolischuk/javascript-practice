@@ -1,4 +1,3 @@
-// import LinkedList from './LinkedList';
 let LinkedList = require('./LinkedList');
 
 class Stack {
@@ -47,8 +46,7 @@ class Stack {
     // return this.linkedList
     //   .toArray
     //   .map(linkedListNode => linkedListNode.value);
-    return this.linkedList
-      .toArray();
+    return this.linkedList.toArray();
   }
 
   /**
