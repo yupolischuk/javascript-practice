@@ -1,12 +1,12 @@
 const Middleware = require('./middleware');
 const middleware = new Middleware();
 
-middleware.use(function(info, next) {
+middleware.use(function firstFunc(info, next) {
     info.msg += ' World';
     next();
 });
 
-middleware.use(function(info, next) {
+middleware.use(function secondFunc(info, next) {
     info.msg += ' !!!';
     next();
 });
