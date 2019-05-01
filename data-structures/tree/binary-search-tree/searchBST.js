@@ -38,10 +38,10 @@ var searchBST = function(root, val) {
         return search(root.left, val);
     } else if (val > root.val && root.right !== null) {
         return search(root.right, val);
-    } else return [];
+    } else return null;
   }
 
   return search(root, val);
 };
 
-console.log(searchBST([4,2,7,1,3], 5));
+console.log(searchBST(TreeNode, 2)); //[2,1,3]
