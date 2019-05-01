@@ -151,26 +151,25 @@ class LinkedList {
   }
 }
 
-module.exports = LinkedList;
+// module.exports = LinkedList;
 
-// const linkedList = new LinkedList();
+const linkedList = new LinkedList();
 
-// linkedList.addAtHead(3);
-// linkedList.addAtHead(5);
-// linkedList.addAtHead(7);
-// console.log(linkedList.toArray());
-// linkedList.addAtHead(9);
+linkedList.addAtHead(3);
+linkedList.addAtHead(5);
+linkedList.addAtHead(7);
+console.log(linkedList.toArray());
+linkedList.addAtHead(9);
 
-// linkedList.addAtTail(77);
-// linkedList.addAtTail(55);
-// linkedList.addAtIndex(5, 799999999999);
+linkedList.addAtTail(77);
+linkedList.addAtTail(55);
+linkedList.addAtIndex(5, 799999999999);
 
-// // console.log(util.inspect(linkedList, false, null, true));
-// console.log('******************************');
-// // console.log(linkedList.get(5));
-// console.log(linkedList.listAll());
-// linkedList.addAtIndex(7, 17);
-// linkedList.addAtIndex(7, 18);
-// console.log(linkedList.listAll());
-// linkedList.deleteAtIndex(4);
-// console.log(linkedList.listAll());
+// console.log(util.inspect(linkedList, false, null, true));
+console.log('******************************');
+console.log(linkedList.get(5));// TODO fix
+
+linkedList.addAtIndex(7, 17);
+linkedList.addAtIndex(7, 18);
+linkedList.deleteAtIndex(4);
+console.log(linkedList.toArray());
