@@ -14,6 +14,6 @@ function bubbleSort(unsorted) {
 }
 
 
-let unsorted = [7, 5, 3, 9, 1, 12];
-console.log(bubbleSort(unsorted));
+const unsorted = [7, 5, 3, 9, 1, 12];
+console.log(bubbleSort(unsorted)); // 1, 3, 5, 7, 9, 12
 
