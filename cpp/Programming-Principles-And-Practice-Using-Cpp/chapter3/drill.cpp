@@ -33,7 +33,5 @@ int main()
         cout<<"I hope you are enjoying retirement\n";
     cout<<"Your sincerely \n\nYura\n";
 
-
-
     return 0;
 }
