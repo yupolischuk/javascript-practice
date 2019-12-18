@@ -12,14 +12,14 @@ int main()
         std::cin.putback(c);
         static int val1{};
         static int val2{};
-        if (std::cin >> val1 >> val2)
+        if (std::cin >> val1 >> val2) {
             std::cout << "Entered numbers:" << val1 << " " << val2 << '\n';
-        else
+        } else {
             std::cin.clear();
             std::cin.get(c);
-            if (c == terminationChar)
-                break;
             std::cout << "Entry was invalid number or termination character, please try again" << '\n';
+        }
+
         std::cout << instructions << '\n';
     }
 
