@@ -5,9 +5,13 @@ vector<int> generate_vector()
     srand(time(0));
     vector<int> numbers;
 
-    for (int i=0; i < 4; i++) {
-        int num = rand() % 10;
-        numbers.push_back(num);
+    for (int i = 0; i < 4; ) {
+        int rand_num = rand() % 10;
+        // add only unique numbers
+        if (!count(numbers.begin(), numbers.end(), rand_num)) {
+            numbers.push_back(rand_num);
+            i++;
+        }
     }
 
     return numbers;
