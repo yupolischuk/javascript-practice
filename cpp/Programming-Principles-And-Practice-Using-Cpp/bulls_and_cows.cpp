@@ -17,31 +17,33 @@ vector<int> generate_vector()
     return numbers;
 }
 
-int main()
+vector<int> get_user_input()
 {
-    // generate vector of random nums
-    vector<int> random_nums;
-
-    random_nums = generate_vector();
-
-    cout << "generated vector: " << random_nums[0] << ' '<< random_nums[1] << ' '<< random_nums[2] << ' '<< random_nums[3] << '\n';
-
-    //*************************************************************
-    // prompt user to guess nums
     cout << "enter nums to guess\n";
 
     string entered_str; // todo add validation only integers 0-9 and only four
     cin >> entered_str;
     cout << "entered string is " << entered_str << '\n';
 
-    //*************************************************************
-    // read user input to vector of ints
     vector<int> entered_nums;
-
     for (int i = 0; i < entered_str.size(); ++i) {
-        entered_nums.push_back(entered_str[i] - '0');  // The digits will be in the same order as before
+        entered_nums.push_back(entered_str[i] - '0');
     }
 
+    return entered_nums;
+}
+
+int main()
+{
+    // generate vector of random nums
+    vector<int> random_nums;
+    random_nums = generate_vector();
+    cout << "generated vector: " << random_nums[0] << ' '<< random_nums[1] << ' '<< random_nums[2] << ' '<< random_nums[3] << '\n';
+
+    //*************************************************************
+    // prompt user to guess nums and put to vector
+    vector<int> entered_nums;
+    entered_nums = get_user_input();
     cout << "entered vector: " << entered_nums[0] << ' '<< entered_nums[1] << ' '<< entered_nums[2] << ' '<< entered_nums[3] << '\n';
 
     //*************************************************************
