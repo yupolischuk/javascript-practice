@@ -57,30 +57,38 @@ vector<int> compare_input(vector<int> random_nums, vector<int> entered_nums)
 
 int main()
 {
-    // generate vector of random nums
-    vector<int> random_nums;
-    random_nums = generate_vector();
-    cout << "generated vector: " << random_nums[0] << ' '<< random_nums[1] << ' '<< random_nums[2] << ' '<< random_nums[3] << '\n';
+    while(true) {
+        // generate vector of random nums
+        vector<int> random_nums;
+        random_nums = generate_vector();
+        cout << "******************\ngenerated vector: " << random_nums[0] << ' '<< random_nums[1] << ' '<< random_nums[2] << ' '<< random_nums[3] << '\n';
 
-    //*************************************************************
-    // prompt user to guess nums and put to vector
-    vector<int> entered_nums;
-    entered_nums = get_user_input();
-    cout << "entered vector: " << entered_nums[0] << ' '<< entered_nums[1] << ' '<< entered_nums[2] << ' '<< entered_nums[3] << '\n';
+        bool userWin = false;
+        //*************************************************************
+        while(userWin == false) {
+            // prompt user to guess nums and put to vector
+            vector<int> entered_nums;
+            entered_nums = get_user_input();
+            cout << "entered vector: " << entered_nums[0] << ' '<< entered_nums[1] << ' '<< entered_nums[2] << ' '<< entered_nums[3] << '\n';
 
-    //*************************************************************
-    // compare input
-    vector<int> comparison_result;
-    comparison_result = compare_input(random_nums, entered_nums);
+            //*************************************************************
+            // compare input
+            vector<int> comparison_result;
+            comparison_result = compare_input(random_nums, entered_nums);
 //    int cows = 0;
 //    int bulls = 0;
 
 
-    // output result
-    cout << "The result is:\nBulls: " << comparison_result[0] << " Cows: " << comparison_result[1] << '\n';
-    if (comparison_result[0] == 4) {
-        cout << "Congratulations! You're win!\n";
+            // output result
+            cout << "The result is:\nBulls: " << comparison_result[0] << " Cows: " << comparison_result[1] << '\n';
+            if (comparison_result[0] == 4) {
+                cout << "Congratulations! You're win!\n";
+                userWin = true;
+            }
+
+        }
     }
+
 
     return 0;
 }
