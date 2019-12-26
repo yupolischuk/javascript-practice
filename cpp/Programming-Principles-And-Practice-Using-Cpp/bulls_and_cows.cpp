@@ -33,6 +33,28 @@ vector<int> get_user_input()
     return entered_nums;
 }
 
+vector<int> compare_input(vector<int> random_nums, vector<int> entered_nums)
+{
+    int bulls = 0;
+    int cows = 0;
+
+    vector<int> result; // todo rewrite to tuple
+    cout << "loop vector" << '\n';
+    for (int i = 0; i < random_nums.size(); i++) {
+        for (int k = 0; k < entered_nums.size(); k++) {
+            if (entered_nums[k] == random_nums[i] && k == i) {
+                bulls++;
+            } else if (entered_nums[k] == random_nums[i]) {
+                cows++;
+            }
+        }
+    }
+    result.push_back(bulls);
+    result.push_back(cows);
+
+    return result;
+}
+
 int main()
 {
     // generate vector of random nums
@@ -48,21 +70,17 @@ int main()
 
     //*************************************************************
     // compare input
-    int cows = 0;
-    int bulls = 0;
-    cout << "loop vector" << '\n';
-    for (int i = 0; i < random_nums.size(); i++) {
-        for (int k = 0; k < entered_nums.size(); k++) {
-            if (entered_nums[k] == random_nums[i] && k == i) {
-                bulls++;
-            } else if (entered_nums[k] == random_nums[i]) {
-                cows++;
-            }
-        }
-    }
+    vector<int> comparison_result;
+    comparison_result = compare_input(random_nums, entered_nums);
+//    int cows = 0;
+//    int bulls = 0;
+
 
     // output result
-    cout << "The result is:\nBulls: " << bulls << " Cows: " << cows << '\n';
+    cout << "The result is:\nBulls: " << comparison_result[0] << " Cows: " << comparison_result[1] << '\n';
+    if (comparison_result[0] == 4) {
+        cout << "Congratulations! You're win!\n";
+    }
 
     return 0;
 }
