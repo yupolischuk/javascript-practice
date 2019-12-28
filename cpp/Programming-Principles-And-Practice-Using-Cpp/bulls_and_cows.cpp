@@ -23,7 +23,6 @@ vector<int> get_user_input()
 
     string entered_str; // todo add validation only integers 0-9 and only four
     cin >> entered_str;
-//    cout << "entered string is " << entered_str << '\n';
 
     vector<int> entered_nums;
     for (int i = 0; i < entered_str.size(); ++i) {
@@ -37,9 +36,8 @@ vector<int> compare_input(vector<int> random_nums, vector<int> entered_nums)
 {
     int bulls = 0;
     int cows = 0;
-
     vector<int> result; // todo rewrite to tuple
-//    cout << "loop vector" << '\n';
+
     for (int i = 0; i < random_nums.size(); i++) {
         for (int k = 0; k < entered_nums.size(); k++) {
             if (entered_nums[k] == random_nums[i] && k == i) {
@@ -61,33 +59,33 @@ int main()
         // generate vector of random nums
         vector<int> random_nums;
         random_nums = generate_vector();
-//        cout << "generated vector: " << random_nums[0] << ' '<< random_nums[1] << ' '<< random_nums[2] << ' '<< random_nums[3] << '\n';
+        cout << "generated vector: " << random_nums[0] << ' '<< random_nums[1] << ' '<< random_nums[2] << ' '<< random_nums[3] << '\n';
+        cout << "Hi! I have in mind four random numbers (0-9), can you guess what they are?\n";
 
         bool userWin = false;
-        //*************************************************************
-        while(userWin == false) {
+
+        while(!userWin) {
             // prompt user to guess nums and put to vector
             vector<int> entered_nums;
             entered_nums = get_user_input();
-//            cout << "entered vector: " << entered_nums[0] << ' '<< entered_nums[1] << ' '<< entered_nums[2] << ' '<< entered_nums[3] << '\n';
 
-            //*************************************************************
-            // compare input
+            // process input
             vector<int> comparison_result;
             comparison_result = compare_input(random_nums, entered_nums);
-//    int cows = 0;
-//    int bulls = 0;
+            // int cows = 0;
+            // int bulls = 0;
 
             // output result
             cout << "The result is:\nBulls: " << comparison_result[0] << " Cows: " << comparison_result[1] << '\n';
             if (comparison_result[0] == 4) {
-                cout << "*********************\nCongratulations! You're win!\n**********************\n";
+                cout << "************************************\n"
+                        "*** Congratulations! You're win! ***\n"
+                        "************************************\n";
                 userWin = true;
             }
 
         }
     }
-
 
     return 0;
 }
