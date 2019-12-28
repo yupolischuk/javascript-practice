@@ -32,11 +32,10 @@ vector<int> get_user_input()
     return entered_nums;
 }
 
-vector<int> compare_input(vector<int> random_nums, vector<int> entered_nums)
+tuple<int, int> compare_input(vector<int> random_nums, vector<int> entered_nums)
 {
     int bulls = 0;
     int cows = 0;
-    vector<int> result; // todo rewrite to tuple
 
     for (int i = 0; i < random_nums.size(); i++) {
         for (int k = 0; k < entered_nums.size(); k++) {
@@ -47,10 +46,8 @@ vector<int> compare_input(vector<int> random_nums, vector<int> entered_nums)
             }
         }
     }
-    result.push_back(bulls);
-    result.push_back(cows);
 
-    return result;
+    return make_tuple(bulls, cows);
 }
 
 int main()
@@ -70,20 +67,19 @@ int main()
             entered_nums = get_user_input();
 
             // process input
-            vector<int> comparison_result;
-            comparison_result = compare_input(random_nums, entered_nums);
-            // int cows = 0;
-            // int bulls = 0;
+            int bulls;
+            int cows;
+            tie(bulls, cows) = compare_input(random_nums, entered_nums);
 
             // output result
-            cout << "The result is:\nBulls: " << comparison_result[0] << " Cows: " << comparison_result[1] << '\n';
-            if (comparison_result[0] == 4) {
+            cout << "The result is:\nBulls: " << bulls << " Cows: " << cows << '\n';
+
+            if (bulls == 4) {
                 cout << "************************************\n"
                         "*** Congratulations! You're win! ***\n"
                         "************************************\n";
                 userWin = true;
             }
-
         }
     }
 
