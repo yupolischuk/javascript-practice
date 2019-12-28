@@ -42,6 +42,7 @@ tuple<int, int> compare_input(vector<int> random_nums, vector<int> entered_nums)
             if (entered_nums[k] == random_nums[i] && k == i) {
                 bulls++;
             } else if (entered_nums[k] == random_nums[i]) {
+                // todo increment only unique numbers: generated[5764] user input 7777 -> 1 bull and 3 cows
                 cows++;
             }
         }
@@ -57,7 +58,7 @@ int main()
         vector<int> random_nums;
         random_nums = generate_vector();
         cout << "generated vector: " << random_nums[0] << ' '<< random_nums[1] << ' '<< random_nums[2] << ' '<< random_nums[3] << '\n';
-        cout << "Hi! I have in mind four random numbers (0-9), can you guess what they are?\n";
+        cout << "Hi! I have in mind four unique random numbers (0-9), can you guess what they are?\n";
 
         bool userWin = false;
 
