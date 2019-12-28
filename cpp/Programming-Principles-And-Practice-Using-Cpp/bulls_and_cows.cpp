@@ -1,11 +1,10 @@
 #include "./std_lib_facilities.h"
 
-vector<int> generate_vector()
-{
+vector<int> generate_vector() {
     srand(time(0));
     vector<int> numbers;
 
-    for (int i = 0; i < 4; ) {
+    for (int i = 0; i < 4;) {
         int rand_num = rand() % 10;
         // add only unique numbers
         if (!count(numbers.begin(), numbers.end(), rand_num)) {
@@ -17,11 +16,10 @@ vector<int> generate_vector()
     return numbers;
 }
 
-vector<int> get_user_input()
-{
-    cout << "enter nums to guess\n";
+vector<int> get_user_input() {
+    cout << "Enter nums to guess\n";
 
-    string entered_str; // todo add validation only integers 0-9 and only four
+    string entered_str;
     cin >> entered_str;
 
     vector<int> entered_nums;
@@ -32,37 +30,46 @@ vector<int> get_user_input()
     return entered_nums;
 }
 
-tuple<int, int> compare_input(vector<int> random_nums, vector<int> entered_nums)
-{
-    int bulls = 0;
-    int cows = 0;
+tuple<int, int> compare_input(vector<int> generated_nums, vector<int> entered_nums) {
+    vector<int> bulls;
+    vector<int> cows;
 
-    for (int i = 0; i < random_nums.size(); i++) {
+    // seek for bulls
+    for (int i = 0; i < generated_nums.size(); i++) {
         for (int k = 0; k < entered_nums.size(); k++) {
-            if (entered_nums[k] == random_nums[i] && k == i) {
-                bulls++;
-            } else if (entered_nums[k] == random_nums[i]) {
-                // todo increment only unique numbers: generated[5764] user input 7777 -> 1 bull and 3 cows
-                cows++;
+            if (entered_nums[k] == generated_nums[i] && k == i) {
+                bulls.push_back(entered_nums[k]);
             }
         }
     }
 
-    return make_tuple(bulls, cows);
+    // seek for cows
+    for (int i = 0; i < generated_nums.size(); i++) {
+        for (int k = 0; k < entered_nums.size(); k++) {
+            if (entered_nums[k] == generated_nums[i]
+                && !count(cows.begin(), cows.end(), entered_nums[k])
+                && !count(bulls.begin(), bulls.end(), entered_nums[k])
+               ) {
+                cows.push_back(entered_nums[k]);
+            }
+        }
+    }
+
+    return make_tuple(bulls.size(), cows.size());
 }
 
-int main()
-{
-    while(true) {
+int main() {
+    while (true) {
         // generate vector of random nums
-        vector<int> random_nums;
-        random_nums = generate_vector();
-        cout << "generated vector: " << random_nums[0] << ' '<< random_nums[1] << ' '<< random_nums[2] << ' '<< random_nums[3] << '\n';
+        vector<int> generated_nums;
+        generated_nums = generate_vector();
+        // cout << "generated vector: " << generated_nums[0] << ' ' << generated_nums[1] << ' ' << generated_nums[2] << ' '
+             << generated_nums[3] << '\n';
         cout << "Hi! I have in mind four unique random numbers (0-9), can you guess what they are?\n";
 
         bool userWin = false;
 
-        while(!userWin) {
+        while (!userWin) {
             // prompt user to guess nums and put to vector
             vector<int> entered_nums;
             entered_nums = get_user_input();
@@ -70,7 +77,7 @@ int main()
             // process input
             int bulls;
             int cows;
-            tie(bulls, cows) = compare_input(random_nums, entered_nums);
+            tie(bulls, cows) = compare_input(generated_nums, entered_nums);
 
             // output result
             cout << "The result is:\nBulls: " << bulls << " Cows: " << cows << '\n';
@@ -78,7 +85,7 @@ int main()
             if (bulls == 4) {
                 cout << "************************************\n"
                         "*** Congratulations! You're win! ***\n"
-                        "************************************\n";
+                        "************************************\n\n";
                 userWin = true;
             }
         }
