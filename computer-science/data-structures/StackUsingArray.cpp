@@ -19,7 +19,8 @@ void pop()
 {
     if (top == 0) {
         cout << "Underflow" << endl;
-    } else {
+    }
+    else {
         cout << stack[--top] << " deleted" << endl;
     }
 }
