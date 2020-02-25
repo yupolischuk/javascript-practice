@@ -13,26 +13,26 @@ node *start;
 void insert(int x)
 {
     node *t = start;
-    if (start != null) {
-        while (t->next != null) {
+    if (start != NULL) {
+        while (t->next != NULL) {
             t = t->next;
         }
         node *n = new node;
         t->next = n;
         n->val = x;
-        n->next = null;
+        n->next = NULL;
     }
     else {
         node *n = new node;
         n->val = x;
-        n->next = null;
+        n->next = NULL;
         start = n;
     }
 }
 
 void remove(int x)
 {
-    if (start == null) {
+    if (start == NULL) {
         cout << "Linked list is empty" << endl;
         return;
     }
@@ -43,12 +43,14 @@ void remove(int x)
         return;
     }
 
-    while (temp != null && temp->val != x) {
+    node *temp = start, *parent = start;
+
+    while (temp != NULL && temp->val != x) {
         parent = temp;
         temp = temp->next;
     }
 
-    if (temp == null) {
+    if (temp == NULL) {
         cout << " Not found in list " << endl;
         return;
     }
@@ -61,7 +63,7 @@ void search(int x)
 {
     node *t = start;
     int found = 0;
-    while (t != null) {
+    while (t != NULL) {
         if (t->val == x) {
             cout << "Found" << endl;
             found = 1;
@@ -77,16 +79,32 @@ void search(int x)
 void show()
 {
     node *t = start;
-    while (!= null) {
+    while (t != NULL) {
         cout << t->val << "\t";
         t = t->next;
     }
+    cout << endl;
+}
+
+void reverse()
+{
+    node *first = start;
+    node *second = first->next;
+    while (second != NULL) {
+        node *temp = second->next;
+        second->next = first;
+        first = second;
+        second = temp;
+    }
+
+    start->next = NULL;
+    start = first;
 }
 
 
 int main()
 {
-    int command, value;
+    int command, x;
 
     do {
         cout << "1. Insert" << endl;
@@ -110,13 +128,12 @@ int main()
                 remove(x);
                 break;
             case 3:
-                cout << "Enter the element to be searcheded: " << endl;
+                cout << "Enter the element to be searched: " << endl;
                 cin >> x;
                 search(x);
                 break;
             case 4:
                 show();
-                cout << endl;
                 break;
             case 5:
                 cout << "The reversed list: " << endl;
@@ -125,7 +142,7 @@ int main()
                 break;
         }
 
-    } while (choice != 0);
+    } while (command != 0);
 
     return 0;
 }
