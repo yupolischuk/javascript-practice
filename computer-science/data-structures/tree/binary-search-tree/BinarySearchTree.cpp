@@ -4,6 +4,9 @@ using namespace std;
 
 struct node
 {
+    // так как нет root.node не можем возвращаться вверх при обходе и проходить все узлы дерев
+    // поэтому обходим только до листьев
+    // todo дописать с обходом всех узлов через root.node
     int val;
     node *left;
     node *right;
@@ -146,7 +149,6 @@ void postorder_traversal(node *n)
 
 int main()
 {
-    // todo fix bugs
     q.front = 0;
     q.rear = 0;
     int value;
