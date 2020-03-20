@@ -52,11 +52,11 @@ public:
         if (root == NULL) { return; }
         inOrder(root->left);
         std::cout << root->data << " ";
-        inOrder(node->right);
+        inOrder(root->right);
     }
 
 
-}; //End of Solution
+};
 
 /*
  Input
@@ -99,7 +99,15 @@ int main() {
         root = myTree.insert(root, data);
     }
 
+    std::cout << "PreOrder " << "\n";
     myTree.preOrder(root);
+
+    std::cout  << "\n" << "PostOrder " << "\n";
+    myTree.postOrder(root);
+
+    std::cout  << "\n" << "InOrder " << "\n";
+    myTree.inOrder(root);
+    std::cout   << "\n";
 
     return 0;
 }
